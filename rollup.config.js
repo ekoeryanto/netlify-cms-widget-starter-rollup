@@ -16,11 +16,6 @@ const watch = process.env.ROLLUP_WATCH;
 
 const globals = {
   'netlify-cms': 'CMS',
-  react: 'React',
-  'react-dom': 'ReactDOM',
-  'prop-types': 'PropTypes',
-  immutable: 'Immutable',
-  'react-immutable-proptypes': 'ImmutablePropTypes',
   'create-react-class': 'createClass',
 };
 
