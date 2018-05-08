@@ -36,6 +36,8 @@ const createOutput = (format = 'umd') => ({
   globals,
 });
 
+const withPropTypes = format => format === 'umd';
+
 export default formats.map(format => ({
   input: 'src/index.js',
   output: createOutput(format),
@@ -51,7 +53,7 @@ export default formats.map(format => ({
     babelPlugin({
       exclude: ['node_modules/**'],
       plugins: [
-        (format !== 'es' || prod) && [
+        withPropTypes(format) && [
           'transform-react-remove-prop-types',
           {
             removeImport: true,
