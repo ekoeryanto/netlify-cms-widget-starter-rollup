@@ -31,7 +31,7 @@ const formats = ['umd', 'iife', 'cjs', 'es'];
 const createOutput = (format = 'umd') => ({
   sourcemap: prod,
   name: pkg.library || pkg.name,
-  file: `lib/${format}/${pkg.name}.${prod ? 'min.js' : 'js'}`,
+  file: `lib/${format}/index.${prod ? 'min.js' : 'js'}`,
   format,
   globals,
 });

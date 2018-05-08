@@ -3,7 +3,9 @@
   "library": "ColorWidget",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "lib/cjs/index.js",
+  "module": "lib/es/index.js",
+  "browser": "lib/umd/index.min.js",
   "scripts": {
     "start": "rollup -wc",
     "build:dev": "rollup -c --environment NODE_ENV:development",
@@ -24,9 +26,8 @@
   "author": "Eko Eryanto <ekoeryanto@gmail.com>",
   "license": "MIT",
   "files": [
-    "umd/**",
-    "cjs/**",
-    "es/**"
+    "lib/**",
+    "src/**"
   ],
   "dependencies": {
     "create-react-class": "^15.6.3",
