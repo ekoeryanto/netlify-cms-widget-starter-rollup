@@ -36,7 +36,7 @@ const createOutput = (format = 'umd') => ({
   globals,
 });
 
-const withPropTypes = format => format === 'umd';
+const isBrowser = format => format === 'umd' || format === 'iife';
 
 export default formats.map(format => ({
   input: 'src/index.js',
@@ -52,8 +52,16 @@ export default formats.map(format => ({
     }),
     babelPlugin({
       exclude: ['node_modules/**'],
+      presets: [
+        isBrowser(format) && [
+          '@babel/preset-react',
+          {
+            pragma: 'h',
+          },
+        ],
+      ].filter(Boolean),
       plugins: [
-        withPropTypes(format) && [
+        isBrowser(format) && [
           'transform-react-remove-prop-types',
           {
             removeImport: true,

@@ -6,12 +6,7 @@
         "modules": false
       }
     ],
-    [
-      "@babel/preset-react",
-      {
-        "pragma": "h"
-      }
-    ],
+    "@babel/preset-react",
     "@babel/preset-stage-3"
   ]
 }
