@@ -26,7 +26,7 @@ const globals = {
 
 const external = Object.keys(globals);
 
-const formats = watch ? ['umd'] : ['umd', 'cjs', 'es'];
+const formats = ['umd', 'iife', 'cjs', 'es'];
 
 const createOutput = (format = 'umd') => ({
   sourcemap: prod,
@@ -38,7 +38,7 @@ const createOutput = (format = 'umd') => ({
 
 const isBrowser = format => format === 'umd' || format === 'iife';
 
-export default formats.map(format => ({
+export default (watch ? ['umd'] : formats).map(format => ({
   input: 'src/index.js',
   output: createOutput(format),
   external,
