@@ -26,8 +26,9 @@ const globals = {
 
 const external = Object.keys(globals);
 
-const formats = ['umd', 'iife', 'cjs', 'es'];
+const WATCH_FORMAT = process.env.WATCH_FORMAT || 'umd';
 
+const formats = ['umd', 'iife', 'cjs', 'es'];
 const createOutput = (format = 'umd') => ({
   sourcemap: prod,
   name: pkg.library || pkg.name,
@@ -38,7 +39,7 @@ const createOutput = (format = 'umd') => ({
 
 const isBrowser = format => format === 'umd' || format === 'iife';
 
-export default (watch ? ['umd'] : formats).map(format => ({
+export default (watch ? [WATCH_FORMAT] : formats).map(format => ({
   input: 'src/index.js',
   output: createOutput(format),
   external,
@@ -61,7 +62,8 @@ export default (watch ? ['umd'] : formats).map(format => ({
         ],
       ].filter(Boolean),
       plugins: [
-        isBrowser(format) && !watch && [
+        isBrowser(format) &&
+          !watch && [
           'transform-react-remove-prop-types',
           {
             removeImport: true,
@@ -76,5 +78,7 @@ export default (watch ? ['umd'] : formats).map(format => ({
     }),
   ]
     .concat(prod ? [stripPlugin(), uglifyPlugin()] : [])
-    .concat(watch ? [servePlugin({ contentBase: ['public', 'lib/umd'] }), livereloadPlugin()] : []),
+    .concat(watch
+      ? [servePlugin({ contentBase: ['public', `lib/${WATCH_FORMAT}`] }), livereloadPlugin()]
+      : []),
 }));
