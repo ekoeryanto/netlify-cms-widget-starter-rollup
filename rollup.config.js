@@ -61,7 +61,7 @@ export default (watch ? ['umd'] : formats).map(format => ({
         ],
       ].filter(Boolean),
       plugins: [
-        isBrowser(format) && [
+        isBrowser(format) && !watch && [
           'transform-react-remove-prop-types',
           {
             removeImport: true,
