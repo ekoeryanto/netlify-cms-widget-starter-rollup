@@ -13,7 +13,7 @@
     "clean": "rimraf lib",
     "build": "npm-run-all --parallel build:*",
     "prepublishOnly": "npm-run-all clean build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "precommit": "eslint src"
   },
   "keywords": [
     "netlify",
@@ -48,6 +48,7 @@
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.4.0",
+    "husky": "^0.14.3",
     "npm-run-all": "^4.1.2",
     "rimraf": "^2.6.2",
     "rollup": "^0.58.2",
