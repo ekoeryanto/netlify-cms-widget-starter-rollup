@@ -48,6 +48,8 @@
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.4.0",
     "husky": "^0.14.3",
+    "lodash": "^4.17.10",
+    "module-igniter": "^0.1.0",
     "netlify-cms": "^1.7.0",
     "npm-run-all": "^4.1.2",
     "react": "^16.3.2",
