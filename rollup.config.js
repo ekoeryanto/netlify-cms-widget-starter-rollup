@@ -37,15 +37,13 @@ export default (watch ? [WATCH_FORMAT] : formats).map(format => ({
       },
       babel: {
         exclude: ['node_modules/**'],
-        presets: [
+        plugins: [
           isBrowser(format) && [
-            '@babel/preset-react',
+            'transform-react-jsx',
             {
               pragma: 'h',
             },
           ],
-        ].filter(Boolean),
-        plugins: [
           isBrowser(format) && [
             'transform-react-remove-prop-types',
             {
