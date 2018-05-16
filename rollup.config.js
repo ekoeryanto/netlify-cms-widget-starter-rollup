@@ -31,10 +31,13 @@ export default (watch ? [WATCH_FORMAT] : formats).map(format => ({
   plugins: [
     ...plug({
       replace: { 'process.env.NODE_ENV': JSON.stringify(environment) },
-      'node-resolve': true,
+      'node-resolve': {
+        extensions: ['.js', '.jsx', '.json'],
+      },
       commonjs: {
         include: ['node_modules/**'],
       },
+      json: { indent: '  ' },
       babel: {
         exclude: ['node_modules/**'],
         plugins: [
