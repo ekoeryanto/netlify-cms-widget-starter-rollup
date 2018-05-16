@@ -1,8 +1,10 @@
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
+import { library } from '../package.json';
 
 export default createReactClass({
+  displayName: `${library}Control`,
   propTypes: {
     onChange: PropTypes.func.isRequired,
     forID: PropTypes.string.isRequired,
